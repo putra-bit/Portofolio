@@ -15,13 +15,20 @@
       overflow-x: hidden;
     }
 
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 80px 20px 40px;
       text-align: center;
-      background: radial-gradient(circle at center, #121417 0%, #0f1115 100%);
+      background: transparent;
     }
 
     .hero img {
@@ -79,19 +86,10 @@
       color: #0f1115;
       box-shadow: 0 0 20px #2dce89cc;
     }
-
-    .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #555;
-      background-color: #0a0c0f;
-      border-top: 1px solid #2dce8922;
-    }
   </style>
 </head>
 <body>
-
+  <canvas id="matrix"></canvas>
   <section class="hero">
     <img src="etooo (1).jpg" alt="Foto Profil">
     <h1>PxZenon</h1>
@@ -99,19 +97,45 @@
       Ethical Hacker & Bug Bounty Hunter. <br>
       Berfokus pada keamanan aplikasi web, eksploitasi, dan membuat internet lebih aman.
     </p>
-
     <div class="links">
       <a href="https://hackerone.com/pxzenon" target="_blank">🔓 HackerOne</a>
-      <a href="https://app.hackthebox.com/profile/HTB_ID_KAMU" target="_blank">🧠 Hack The Box</a>
+      <a href="https://app.hackthebox.com/profile/2402018" target="_blank">🧠 Hack The Box</a>
       <a href="https://github.com/putra-bit" target="_blank">🐙 GitHub</a>
       <a href="https://x.com/pxzenon3" target="_blank">🐦 Twitter</a>
       <a href="https://www.linkedin.com/in/putra-abdul-azis-05716a320/" target="_blank">💼 LinkedIn</a>
     </div>
   </section>
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
 
-  <footer class="footer">
-    &copy; 2025 PxZenon. Dibuat dengan semangat hacking hijau neon.
-  </footer>
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
+    const katakana = "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const chars = katakana.split("");
+    const font_size = 14;
+    const columns = canvas.width / font_size;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(15, 17, 21, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#2dce89";
+      ctx.font = font_size + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+        if (drops[i] * font_size > canvas.height || Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+    window.addEventListener("resize", () => location.reload());
+  </script>
 </body>
 </html>
